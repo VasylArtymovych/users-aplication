@@ -4,32 +4,21 @@ import Card from "./Card";
 import { CardsContainer, BtnsContainer, StyledButton } from "./Main.styled";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-function Main() {
-  const [users, setUsers] = useState([]);
+function Main({ filteredUsers }) {
   const [index, setIndex] = useState(0);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    async function fetchUsers() {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-        const users = await response.json();
+    const size = 4;
+    const usersChunks = [];
 
-        const size = 4;
-        const usersChunks = [];
-
-        for (let i = 0; i < users.length; i += size) {
-          const chunk = users.slice(i, i + size);
-          usersChunks.push(chunk);
-        }
-        setUsers(usersChunks);
-      } catch (error) {
-        console.log(error.message);
-      }
+    for (let i = 0; i < filteredUsers.length; i += size) {
+      const chunk = filteredUsers.slice(i, i + size);
+      usersChunks.push(chunk);
     }
-    fetchUsers();
-  }, []);
+
+    setUsers(usersChunks);
+  }, [filteredUsers]);
 
   const nextBtnHandler = (e) => {
     if (index < users.length - 1) {
