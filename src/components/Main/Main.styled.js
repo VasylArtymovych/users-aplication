@@ -12,6 +12,22 @@ export const CardsContainer = styled("div")`
   grid-template-columns: 420px 420px;
   justify-content: center;
   grid-gap: 30px;
+
+  /* ${({ disabled }) => {
+    return disabled
+      ? css`
+          display: grid;
+          grid-template-columns: 270px 270px;
+          justify-content: center;
+          grid-gap: 30px;
+        `
+      : css`
+          display: grid;
+          grid-template-columns: 420px 420px;
+          justify-content: center;
+          grid-gap: 30px;
+        `;
+  }} */
 `;
 
 export const BtnsContainer = styled("div")`
@@ -21,12 +37,6 @@ export const BtnsContainer = styled("div")`
 `;
 
 export const StyledButton = styled("div")`
-  /* ${({ disabled }) =>
-    disabled
-      ? css`
-          visibility: hidden;
-        `
-      : null} */
   display: flex;
   justify-content: space-between;
   align-items: center;

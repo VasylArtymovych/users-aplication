@@ -57,7 +57,7 @@ function Main({ filteredUsers }) {
   return (
     <Container>
       <CardsPostsWraper>
-        <CardsContainer>
+        <CardsContainer disabled={posts.length > 0}>
           {users?.length > 0 &&
             users[index].map((user) => (
               <Card key={user.id} user={user} onBtnClick={fetchUserPosts} />
