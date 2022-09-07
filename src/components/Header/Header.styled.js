@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Section = styled.div`
   width: 100vw;
   min-height: 100px;
-  padding: 50px 0 0 0;
+  padding: 50px 0 35px 0;
   background-color: ${({ theme }) => theme.colors.background};
 `;
 

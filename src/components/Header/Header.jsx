@@ -8,7 +8,7 @@ function Header({ onSearchChange, onSelectChange, value }) {
         <Wraper>
           <Logo>Lorem ipsum</Logo>
           <Label>
-            <span>Sort by Name</span>
+            <span>Sort Users</span>
             <select name="sort" onChange={onSelectChange}>
               <option value="default">Default</option>
               <option value="ascending">Ascending</option>

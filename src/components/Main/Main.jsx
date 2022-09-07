@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Container } from "components/Container";
 import Card from "./Card";
-import { CardsContainer, BtnsContainer, StyledButton } from "./Main.styled";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import PostsList from "components/PostsList";
+import {
+  CardsPostsWraper,
+  CardsContainer,
+  BtnsContainer,
+  StyledButton,
+} from "./Main.styled";
 
 function Main({ filteredUsers }) {
   const [index, setIndex] = useState(0);
   const [users, setUsers] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const size = 4;
@@ -16,7 +23,7 @@ function Main({ filteredUsers }) {
       const chunk = filteredUsers.slice(i, i + size);
       usersChunks.push(chunk);
     }
-
+    setIndex(0);
     setUsers(usersChunks);
   }, [filteredUsers]);
 
@@ -26,6 +33,7 @@ function Main({ filteredUsers }) {
     }
     return;
   };
+
   const previousBtnHandler = (e) => {
     if (index > 0) {
       return setIndex((state) => (state -= 1));
@@ -33,12 +41,30 @@ function Main({ filteredUsers }) {
     return;
   };
 
+  const fetchUserPosts = async (id) => {
+    try {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/users/${id}/posts`
+      );
+      const posts = await response.json();
+
+      setPosts(posts);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <Container>
-      <CardsContainer>
-        {users.length > 0 &&
-          users[index].map((user) => <Card key={user.id} user={user} />)}
-      </CardsContainer>
+      <CardsPostsWraper>
+        <CardsContainer>
+          {users?.length > 0 &&
+            users[index].map((user) => (
+              <Card key={user.id} user={user} onBtnClick={fetchUserPosts} />
+            ))}
+        </CardsContainer>
+        {posts.length > 0 && <PostsList posts={posts} />}
+      </CardsPostsWraper>
       <BtnsContainer>
         <StyledButton type="button" onClick={previousBtnHandler}>
           <IoIosArrowBack size={48} style={{ marginRight: "30px" }} />

@@ -1,11 +1,17 @@
 import styled, { css } from "styled-components";
 
+export const CardsPostsWraper = styled("div")`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+`;
+
 export const CardsContainer = styled("div")`
   display: grid;
   grid-template-columns: 420px 420px;
   justify-content: center;
   grid-gap: 30px;
-  margin-top: 35px;
 `;
 
 export const BtnsContainer = styled("div")`
