@@ -21,10 +21,14 @@ export const CardsContainer = styled("div")`
   grid-gap: 10px;
 
   @media (min-width: 768px) {
-    grid-template-columns: 300px 300px;
+    grid-template-columns: 200px 200px;
     gap: 20px;
   }
   @media (min-width: 1200px) {
+    grid-template-columns: 320px 320px;
+    gap: 30px;
+  }
+  @media (min-width: 1500px) {
     grid-template-columns: 420px 420px;
     gap: 30px;
   }
