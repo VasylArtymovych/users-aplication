@@ -7,13 +7,16 @@ export const CardsPostsWraper = styled("div")`
   gap: 10px;
 
   @media (min-width: 768px) {
+    gap: 20px;
+  }
+  @media (min-width: 1200px) {
     gap: 30px;
   }
 `;
 
 export const CardsContainer = styled("div")`
   display: grid;
-  grid-template-columns: 270px;
+  grid-template-columns: 1fr;
   justify-content: center;
   grid-gap: 10px;
 
