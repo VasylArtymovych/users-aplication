@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const List = styled("ul")`
-  width: 50%;
+  width: 100%;
   padding: 20px 10px;
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.secondBackground};
@@ -14,12 +14,12 @@ export const List = styled("ul")`
   }
 
   @media (min-width: 768px) {
-    width: 350px;
     padding: 30px 20px;
   }
   @media (min-width: 1200px) {
-    width: 470px;
+    padding: 50px 30px;
   }
+
   @media (min-width: 1500px) {
     width: 870px;
     padding: 108px 150px;

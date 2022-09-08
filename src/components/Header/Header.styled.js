@@ -50,6 +50,16 @@ export const Label = styled.label`
     border-radius: 20px;
     border: none;
     outline: none;
+
+    @media (min-width: 768px) {
+      padding: 7px;
+      font-size: 14px;
+      line-height: calc(14 / 12);
+    }
+    @media (min-width: 1200px) {
+      font-size: 18px;
+      line-height: calc(14 / 12);
+    }
   }
 
   @media (min-width: 768px) {

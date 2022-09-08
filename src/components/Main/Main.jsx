@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Container } from "components/Container";
 import Card from "./Card";
 import PostsList from "components/PostsList";
@@ -9,6 +8,8 @@ import {
   CardsContainer,
   BtnsContainer,
   StyledButton,
+  BackIcon,
+  ForwardIcon,
 } from "./Main.styled";
 
 function Main({ filteredUsers, isLoading }) {
@@ -63,23 +64,27 @@ function Main({ filteredUsers, isLoading }) {
         <LoadingLine />
       ) : (
         <Container as="main">
-          <CardsPostsWraper>
+          <CardsPostsWraper layout={posts.length > 0}>
             <CardsContainer layout={posts.length > 0}>
               {users?.length > 0 &&
                 users[index].map((user) => (
-                  <Card key={user.id} user={user} onBtnClick={fetchUserPosts} />
+                  <Card
+                    key={user.id}
+                    user={user}
+                    onBtnClick={fetchUserPosts}
+                    layout={posts.length > 0}
+                  />
                 ))}
             </CardsContainer>
             {posts.length > 0 && <PostsList posts={posts} />}
           </CardsPostsWraper>
           <BtnsContainer>
             <StyledButton type="button" onClick={previousBtnHandler}>
-              <IoIosArrowBack size={48} style={{ marginRight: "30px" }} />
+              <BackIcon />
               Previous
             </StyledButton>
             <StyledButton type="button" onClick={nextBtnHandler}>
-              Next{" "}
-              <IoIosArrowForward size={48} style={{ marginLeft: "30px" }} />
+              Next <ForwardIcon />
             </StyledButton>
           </BtnsContainer>
         </Container>
