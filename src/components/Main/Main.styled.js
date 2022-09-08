@@ -13,21 +13,18 @@ export const CardsContainer = styled("div")`
   justify-content: center;
   grid-gap: 30px;
 
-  /* ${({ disabled }) => {
-    return disabled
-      ? css`
-          display: grid;
-          grid-template-columns: 270px 270px;
-          justify-content: center;
-          grid-gap: 30px;
-        `
-      : css`
-          display: grid;
-          grid-template-columns: 420px 420px;
-          justify-content: center;
-          grid-gap: 30px;
-        `;
-  }} */
+  /* grid-template-columns: ${({ layout }) =>
+    layout ? "420px 420px" : "270px 270px"}; */
+
+  /* ${(props) => {
+    props.layout &&
+      css`
+        display: grid;
+        grid-template-columns: 270px 270px;
+        justify-content: center;
+        grid-gap: 30px;
+      `;
+  }}; */
 `;
 
 export const BtnsContainer = styled("div")`
