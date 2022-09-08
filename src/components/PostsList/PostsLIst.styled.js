@@ -29,8 +29,8 @@ export const List = styled("ul")`
 export const Title = styled("h3")`
   margin-bottom: 10px;
   font-weight: 600;
-  font-size: 18px;
-  line-height: calc(22 / 18);
+  font-size: 16px;
+  line-height: calc(18 / 16);
 
   @media (min-width: 1200px) {
     font-weight: 600;
