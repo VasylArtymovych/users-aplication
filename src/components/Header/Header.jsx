@@ -6,7 +6,7 @@ function Header({ onSearchChange, onSelectChange, value }) {
     <Section as="header">
       <Container>
         <Wraper>
-          <Logo>Lorem ipsum</Logo>
+          <Logo>Users Posts</Logo>
           <Label>
             <span>Sort Users</span>
             <select name="sort" onChange={onSelectChange}>

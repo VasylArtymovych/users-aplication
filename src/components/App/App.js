@@ -3,6 +3,7 @@ import Header from "components/Header";
 import Main from "components/Main";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
   const [filter, setFilter] = useState("");
   const [sortedValue, setSortedValue] = useState("default");
   const [users, setUsers] = useState([]);
@@ -11,14 +12,17 @@ function App() {
   useEffect(() => {
     async function fetchUsers() {
       try {
+        setIsLoading(true);
         const response = await fetch(
           "https://jsonplaceholder.typicode.com/users"
         );
         const users = await response.json();
 
         setUsers(users);
+        setIsLoading(false);
       } catch (error) {
         console.log(error.message);
+        setIsLoading(false);
       }
     }
     fetchUsers();
@@ -64,7 +68,7 @@ function App() {
         onSelectChange={handleSortSelect}
         value={filter}
       />
-      <Main filteredUsers={filteredUsers} />
+      <Main filteredUsers={filteredUsers} isLoading={isLoading} />
     </>
   );
 }

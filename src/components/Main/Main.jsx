@@ -3,6 +3,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Container } from "components/Container";
 import Card from "./Card";
 import PostsList from "components/PostsList";
+import { LoadingLine } from "components/Loader";
 import {
   CardsPostsWraper,
   CardsContainer,
@@ -10,7 +11,7 @@ import {
   StyledButton,
 } from "./Main.styled";
 
-function Main({ filteredUsers }) {
+function Main({ filteredUsers, isLoading }) {
   const [index, setIndex] = useState(0);
   const [users, setUsers] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -29,6 +30,7 @@ function Main({ filteredUsers }) {
 
   const nextBtnHandler = (e) => {
     if (index < users.length - 1) {
+      setPosts([]);
       return setIndex((state) => (state += 1));
     }
     return;
@@ -36,6 +38,7 @@ function Main({ filteredUsers }) {
 
   const previousBtnHandler = (e) => {
     if (index > 0) {
+      setPosts([]);
       return setIndex((state) => (state -= 1));
     }
     return;
@@ -55,26 +58,33 @@ function Main({ filteredUsers }) {
   };
 
   return (
-    <Container>
-      <CardsPostsWraper>
-        <CardsContainer layout={posts.length > 0}>
-          {users?.length > 0 &&
-            users[index].map((user) => (
-              <Card key={user.id} user={user} onBtnClick={fetchUserPosts} />
-            ))}
-        </CardsContainer>
-        {posts.length > 0 && <PostsList posts={posts} />}
-      </CardsPostsWraper>
-      <BtnsContainer>
-        <StyledButton type="button" onClick={previousBtnHandler}>
-          <IoIosArrowBack size={48} style={{ marginRight: "30px" }} />
-          Previous
-        </StyledButton>
-        <StyledButton type="button" onClick={nextBtnHandler}>
-          Next <IoIosArrowForward size={48} style={{ marginLeft: "30px" }} />
-        </StyledButton>
-      </BtnsContainer>
-    </Container>
+    <>
+      {isLoading ? (
+        <LoadingLine />
+      ) : (
+        <Container as="main">
+          <CardsPostsWraper>
+            <CardsContainer layout={posts.length > 0}>
+              {users?.length > 0 &&
+                users[index].map((user) => (
+                  <Card key={user.id} user={user} onBtnClick={fetchUserPosts} />
+                ))}
+            </CardsContainer>
+            {posts.length > 0 && <PostsList posts={posts} />}
+          </CardsPostsWraper>
+          <BtnsContainer>
+            <StyledButton type="button" onClick={previousBtnHandler}>
+              <IoIosArrowBack size={48} style={{ marginRight: "30px" }} />
+              Previous
+            </StyledButton>
+            <StyledButton type="button" onClick={nextBtnHandler}>
+              Next{" "}
+              <IoIosArrowForward size={48} style={{ marginLeft: "30px" }} />
+            </StyledButton>
+          </BtnsContainer>
+        </Container>
+      )}
+    </>
   );
 }
 

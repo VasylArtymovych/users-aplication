@@ -14,7 +14,7 @@ function Card({ user, onBtnClick }) {
           onBtnClick(user.id);
         }}
       >
-        Lorem ipsum
+        Show posts
       </CardBtn>
     </CardContainer>
   );
