@@ -7,13 +7,6 @@ export const Theme = Object.freeze({
     border: "#4c4c6a",
   },
 
-  fontSizes: {
-    xs: 12,
-    s: 14,
-    m: 18,
-    l: 24,
-  },
-
   radii: {
     small: "20px",
     medium: "40px",
