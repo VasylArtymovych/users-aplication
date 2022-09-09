@@ -7,7 +7,11 @@ export const List = styled("ul")`
   background-color: ${({ theme }) => theme.colors.secondBackground};
   border-radius: ${({ theme }) => theme.radii.medium};
   & > li {
-    padding: 5px 0;
+    padding: 15px 0;
+
+    @media (min-width: 1200px) {
+      padding: 20px 0;
+    }
   }
   & > li:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.border};
@@ -27,7 +31,6 @@ export const List = styled("ul")`
 `;
 
 export const Title = styled("h3")`
-  margin-bottom: 10px;
   font-weight: 600;
   font-size: 16px;
   line-height: calc(18 / 16);
@@ -37,23 +40,24 @@ export const Title = styled("h3")`
     font-size: 22px;
   }
   @media (min-width: 1500px) {
-    margin-bottom: 20px;
     font-size: 36px;
     line-height: calc(45 / 36);
   }
 `;
 
 export const Text = styled("p")`
+  margin-top: 10px;
   font-weight: 400;
   font-size: 12px;
   line-height: calc(14 / 12);
 
   @media (min-width: 1200px) {
+    margin-top: 20px;
     font-size: 16px;
+    line-height: calc(18 / 16);
   }
   @media (min-width: 1500px) {
-    font-weight: 400;
     font-size: 18px;
-    line-height: calc(23 / 18);
+    line-height: calc(22 / 18);
   }
 `;
