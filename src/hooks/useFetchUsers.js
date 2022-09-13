@@ -1,30 +1,28 @@
-import { useState, useEffect } from "react";
-import Header from "components/Header";
-import Main from "components/Main";
+import { useEffect, useState } from "react";
 
-function App() {
+export const useFetchUsers = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [filter, setFilter] = useState("");
-  const [sortedValue, setSortedValue] = useState("default");
   const [users, setUsers] = useState([]);
+  const [sortedValue, setSortedValue] = useState("default");
   const [sortedUsers, setSortedUsers] = useState(users);
 
-  useEffect(() => {
-    async function fetchUsers() {
-      try {
-        setIsLoading(true);
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-        const users = await response.json();
-
-        setUsers(users);
-        setIsLoading(false);
-      } catch (error) {
+  function fetchUsers() {
+    setIsLoading(true);
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((data) => data.json())
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((error) => {
         console.log(error.message);
+      })
+      .finally(() => {
         setIsLoading(false);
-      }
-    }
+      });
+  }
+
+  useEffect(() => {
     fetchUsers();
   }, []);
 
@@ -53,24 +51,5 @@ function App() {
     name.toLowerCase().includes(filter.toLowerCase())
   );
 
-  const handleSearchChange = (e) => {
-    setFilter(e.target.value);
-  };
-
-  const handleSortSelect = (e) => {
-    setSortedValue(e.target.value);
-  };
-
-  return (
-    <>
-      <Header
-        onSearchChange={handleSearchChange}
-        onSelectChange={handleSortSelect}
-        value={filter}
-      />
-      <Main filteredUsers={filteredUsers} isLoading={isLoading} />
-    </>
-  );
-}
-
-export default App;
+  return { isLoading, filter, setFilter, users, setSortedValue, filteredUsers };
+};

@@ -183,7 +183,7 @@ export const CardBtn = styled("button")`
     ${({ layout }) => {
       return layout
         ? css`
-            width: 196px;
+            min-width: 196px;
             height: 55px;
             padding: 20px;
             font-weight: 400;
@@ -191,7 +191,7 @@ export const CardBtn = styled("button")`
             line-height: calc(23 / 24);
           `
         : css`
-            width: 248px;
+            min-width: 248px;
             height: 70px;
             padding: 20px;
             font-weight: 600;

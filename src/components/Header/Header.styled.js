@@ -75,7 +75,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  width: 120px;
+  min-width: 120px;
   height: 35px;
   padding: 7px 10px;
   font-weight: 400;
@@ -91,7 +91,7 @@ export const Input = styled.input`
   }
 
   @media (min-width: 768px) {
-    width: 220px;
+    min-width: 220px;
     height: 50px;
     padding: 10px 20px;
     font-weight: 400;
@@ -99,7 +99,7 @@ export const Input = styled.input`
     line-height: calc(30 / 24);
   }
   @media (min-width: 1200px) {
-    width: 248px;
+    min-width: 248px;
     height: 70px;
     padding: 20px 35px;
     font-weight: 400;
