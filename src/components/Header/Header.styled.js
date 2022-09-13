@@ -15,18 +15,13 @@ export const Wraper = styled.div`
 
 export const Logo = styled.p`
   font-weight: 400;
-  font-size: 14px;
+  font-size: calc(14px + 14 * (100vw / 1200));
   line-height: calc(14 / 12);
   color: ${({ theme }) => theme.colors.text};
 
   &:hover {
     opacity: 0.7;
     cursor: pointer;
-  }
-
-  @media (min-width: 768px) {
-    font-size: 24px;
-    line-height: calc(30 / 24);
   }
 `;
 
@@ -36,14 +31,14 @@ export const Label = styled.label`
   align-items: center;
   gap: 10px;
   margin-right: 10px;
-  font-size: 12px;
+  font-size: calc(12px + 12 * (100vw / 1200));
   line-height: calc(18 / 12);
   color: ${({ theme }) => theme.colors.text};
 
   & select {
     padding: 3px;
     font-weight: 400;
-    font-size: 12px;
+    font-size: calc(12px + 6 * (100vw / 1200));
     line-height: calc(14 / 12);
     color: ${({ theme }) => theme.colors.text};
     background-color: ${({ theme }) => theme.colors.secondBackground};
@@ -53,29 +48,19 @@ export const Label = styled.label`
 
     @media (min-width: 768px) {
       padding: 7px;
-      font-size: 14px;
-      line-height: calc(14 / 12);
-    }
-    @media (min-width: 1200px) {
-      font-size: 18px;
-      line-height: calc(14 / 12);
     }
   }
 
   @media (min-width: 768px) {
     padding: 7px;
-    font-weight: 400;
-    font-size: 14px;
   }
   @media (min-width: 1200px) {
     flex-direction: row;
-    font-size: 24px;
-    line-height: calc(30 / 24);
   }
 `;
 
 export const Input = styled.input`
-  min-width: 120px;
+  max-width: 120px;
   height: 35px;
   padding: 7px 10px;
   font-weight: 400;

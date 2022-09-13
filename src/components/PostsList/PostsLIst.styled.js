@@ -25,7 +25,7 @@ export const List = styled("ul")`
   }
 
   @media (min-width: 1500px) {
-    width: 870px;
+    max-width: 870px;
     padding: 108px 150px;
   }
 `;
